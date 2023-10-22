@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+
+<form method="post">
+    <div class="form-group">
+        <label>Username
+            <input class="form-control" th:field="${registerFormDTO.firstName}" />
+        </label>
+        <p class="error" th:errors="${registerFormDTO.firstName}"></p>
+    </div>
+    <div class="form-group">
+        <label>Username
+            <input class="form-control" th:field="${registerFormDTO.lastName}" />
+        </label>
+        <p class="error" th:errors="${registerFormDTO.lastName}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Phone
+    <input class="form-control" placeholder="Phone Number" th:field=${registerFormDTO.phone}" type="text"  />
+        </label>
+        <p class="error" th:errors="${registerFormDTO.phone}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Password
+            <input class="form-control" th:field="${registerFormDTO.password}" type="password" />
+        </label>
+        <p class="error" th:errors="${registerFormDTO.password}"></p>
+    </div>
+    <div class="form-group">
+        <label>Verify Password
+            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password" />
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="container">Are you Teacher!
+            <input class="form-control form-check-input"
+                   name="status"
+                   th:checked="*{registerFormDTO.status}"
+                   type="checkbox"
+            >
+    </label>
+    </div>
+
+
+    <input type="submit" class="btn btn-primary" value="Register" />
+</form>
+
+</body>
+</html>
