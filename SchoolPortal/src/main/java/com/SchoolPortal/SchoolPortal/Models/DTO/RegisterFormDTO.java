@@ -4,7 +4,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class RegisterFormTeachertDTO extends LoginFormDTO{
+public class RegisterFormDTO extends LoginFormDTO{
     @NotBlank(message = "First name is required")
     @Size(min = 3, max = 45, message = "First name must be between 3 and 45 characters")
     private String firstName;

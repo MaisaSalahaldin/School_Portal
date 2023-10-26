@@ -50,13 +50,7 @@ public class User {
 
 
 
-    public String getPhone() {
-        return phone;
-    }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     @NotBlank(message = "Phone number is required")
     private String phone;
@@ -67,19 +61,36 @@ public class User {
     @Size(min = 3, max = 45, message = "Last name must be between 3 and 45 characters")
     @NotBlank(message = "Last name is required")
     private String lastName;
+    @NotNull(message="Status is required.")
+    private Boolean status;
 
-    public User(String email, String pwHash, String firstName, String lastName) {
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public User(String email, String pwHash, String firstName, String lastName,String phone,Boolean status) {
 
         this.email = email;
-        this.pwHash = pwHash;
+        this.pwHash = encoder.encode(pwHash);
         this.firstName = firstName;
         this.lastName = lastName;
-
+        this.phone=phone;
+        this.status=status;
     }
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
     }
+    public String getPhone() {
+        return phone;
+    }
 
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
     public String getEmail() {
         return email;
     }
