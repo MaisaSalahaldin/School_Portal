@@ -3,26 +3,32 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 
+<div class="container">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+        <h4 class="card-title mt-3 text-center">Login to Your Account</h4>
 
-
-<form method="post">
+<form method="post" th:object="${loginFormDTO}">
     <div class="form-group">
-        <label th:for="username">Username
-            <input class="form-control" th:field="${loginFormDTO.email}">
+        <label>Email
+            <input class="form-control" th:field="*{email}" />
         </label>
-        <p class="error" th:errors="${loginFormDTO.email}"></p>
+        <p class="error" th:errors="*{email}"></p>
     </div>
+
     <div class="form-group">
         <label>Password
-            <input class="form-control" th:field="${loginFormDTO.password}" type="password">
+            <input class="form-control" th:field="*{password}" type="password" />
         </label>
-        <p class="error" th:errors="${loginFormDTO.password}"></p>
+        <p class="error" th:errors="*{password}"></p>
     </div>
-
+<div class="form-group">
     <input type="submit" class="btn btn-primary" value="Log In" />
+
+</div>
+
 </form>
-
 <p>Don't have an account? <a href="/register">Register for one.</a></p>
-
+    </article>
+</div>
 </body>
 </html>
